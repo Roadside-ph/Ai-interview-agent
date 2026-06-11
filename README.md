@@ -43,16 +43,44 @@
 
 ```
 ai-interview-agent/
-├── week1_llm_cli/          # Week 1: LLM CLI 调用工具
-│   ├── app/                # 源码
-│   ├── tests/              # 测试
-│   └── README.md           # 详细说明
-├── week2_fastapi/          # Week 2: FastAPI 后端骨架
-│   ├── app/
+├── week1_llm_cli/              # Week 1: LLM CLI 调用工具（已完成）
+│   ├── app/                    # 源码（config, api_client, llm_client, async_llm_client, main）
+│   ├── tests/                  # pytest 测试（13 个用例）
 │   └── README.md
-├── week3_*/                # Week 3-8 待添加
+├── week2_fastapi/              # Week 2: FastAPI 后端骨架（进行中）
+│   ├── app/
+│   │   ├── __init__.py
+│   │   └── main.py            # FastAPI 入口，含 / 和 /health 接口
+│   ├── venv/                  # 虚拟环境（已 gitignore）
+│   ├── requirements.txt
+│   └── .gitignore
+├── week3_*/                    # Week 3-8 待添加
 └── README.md               # 本文件（总览）
 ```
+
+## Week 1 详细进度
+
+| Day | 内容 | 核心文件 | 状态 |
+|-----|------|---------|------|
+| Day 1 | Python 工程环境与函数基础 | config.py, history.py, .env | ✅ |
+| Day 2 | HTTP 与 API 调用 | api_client.py | ✅ |
+| Day 3 | 大模型 API 最小调用 | llm_client.py | ✅ |
+| Day 4 | 异步实践，并发调用与耗时统计 | async_llm_client.py, timer.py | ✅ |
+| Day 5 | LLM CLI 工具搭建 | main.py (Rich 美化) | ✅ |
+| Day 6 | 代码重构与 Debug | exceptions.py, logger.py | ✅ |
+| Day 7 | 测试与复盘 | test_exceptions.py, test_logger.py, test_config.py | ✅ |
+
+## Week 2 详细进度
+
+| Day | 内容 | 核心文件 | 状态 |
+|-----|------|---------|------|
+| Day 8 | FastAPI 项目结构与第一个接口 | main.py (GET /, GET /health) | ✅ |
+| Day 9 | Pydantic 请求/响应模型 | 待做 | 待做 |
+| Day 10 | JWT 登录认证 | 待做 | 待做 |
+| Day 11 | 数据库 ORM | 待做 | 待做 |
+| Day 12 | CRUD、分页、统一响应 | 待做 | 待做 |
+| Day 13 | 日志、配置、基础测试 | 待做 | 待做 |
+| Day 14 | 复盘 | 待做 | 待做 |
 
 ## 技术栈
 
