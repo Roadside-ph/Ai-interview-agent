@@ -1,0 +1,106 @@
+# AI-Interview Agent
+
+> 8 周 AI Agent 实习冲刺项目
+> 目标：上海/杭州 AI Agent 应用开发实习
+
+## 项目总览
+
+**最终目标**：AI-Interview —— 基于 RAG 与 Agent 的智能模拟面试系统
+
+完整业务链路：简历解析 -> 岗位匹配 -> RAG 出题 -> AI 评分 -> 面试报告
+
+## 学习路线
+
+### Phase 1：Python 基础与后端骨架（Week 1-2）
+
+| 周次 | 主题 | 核心产出物 | 状态 |
+|------|------|-----------|------|
+| Week 1 | Python MUP + HTTP + Git | LLM CLI 调用工具 | ✅ 已完成 |
+| Week 2 | FastAPI 后端骨架 | Agent 后端服务骨架 | 进行中 |
+
+### Phase 2：RAG 与 AI-Interview（Week 3-5）
+
+| 周次 | 主题 | 核心产出物 | 状态 |
+|------|------|-----------|------|
+| Week 3 | 简历解析与岗位匹配 | 简历解析与岗位匹配 API | 未开始 |
+| Week 4 | 面试题库 RAG v1 | 面试题库 RAG 检索服务 | 未开始 |
+| Week 5 | 岗位匹配 + RAG 出题 v2 | 岗位匹配驱动的出题与评分服务 | 未开始 |
+
+### Phase 3：Agent 与工作流（Week 6-7）
+
+| 周次 | 主题 | 核心产出物 | 状态 |
+|------|------|-----------|------|
+| Week 6 | Agent 核心能力 | 岗位匹配 Agent 与面试流程 Agent | 未开始 |
+| Week 7 | 主项目闭环 | AI-Interview 智能模拟面试系统 | 未开始 |
+
+### Phase 4：工程化与面试冲刺（Week 8）
+
+| 周次 | 主题 | 核心产出物 | 状态 |
+|------|------|-----------|------|
+| Week 8 | 工程化包装 + 面试准备 | 可展示项目 + 简历 + 面试题库 | 未开始 |
+
+## 项目结构
+
+```
+ai-interview-agent/
+├── week1_llm_cli/          # Week 1: LLM CLI 调用工具
+│   ├── app/                # 源码
+│   ├── tests/              # 测试
+│   └── README.md           # 详细说明
+├── week2_fastapi/          # Week 2: FastAPI 后端骨架
+│   ├── app/
+│   └── README.md
+├── week3_*/                # Week 3-8 待添加
+└── README.md               # 本文件（总览）
+```
+
+## 技术栈
+
+- **语言**：Python 3.11+
+- **HTTP 客户端**：httpx
+- **Web 框架**：FastAPI
+- **ASGI 服务器**：uvicorn
+- **配置管理**：python-dotenv
+- **终端美化**：rich
+- **异步编程**：asyncio
+- **测试框架**：pytest
+- **日志**：logging
+- **LLM 服务**：DeepSeek API
+
+## 快速开始
+
+### Week 1: LLM CLI 工具
+
+```bash
+cd week1_llm_cli
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env  # 填入 API Key
+python -m app.main
+```
+
+### Week 2: FastAPI 后端
+
+```bash
+cd week2_fastapi
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload
+# 浏览器打开 http://127.0.0.1:8000/docs
+```
+
+## 面试话术
+
+> 这是我为期 8 周的 AI Agent 实习冲刺项目。从 Python 基础开始，逐步构建了一个完整的 AI-Interview 智能模拟面试系统。
+>
+> **Week 1** 我搭建了一个 LLM CLI 工具，封装了 DeepSeek API，支持异步并发调用、对话历史持久化、Rich 终端美化。学会了 HTTP 调用、异步编程、模块化设计、自定义异常和日志系统。
+>
+> **Week 2** 我用 FastAPI 把 CLI 工具升级成了后端服务，实现了 Pydantic 数据验证、JWT 认证、数据库 CRUD。
+>
+> 后续几周我会接入 RAG 检索、Agent 工作流，最终完成"简历解析 -> 岗位匹配 -> RAG 出题 -> AI 评分 -> 面试报告"的完整闭环。
+
+## 许可证
+
+本项目为个人学习项目。
