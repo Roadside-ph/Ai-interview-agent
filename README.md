@@ -50,7 +50,10 @@ ai-interview-agent/
 ├── week2_fastapi/              # Week 2: FastAPI 后端骨架（进行中）
 │   ├── app/
 │   │   ├── __init__.py
-│   │   └── main.py            # FastAPI 入口，含 / 和 /health 接口
+│   │   ├── main.py            # FastAPI 入口，含 GET/POST 接口
+│   │   └── schemas/           # Pydantic 数据模型
+│   │       ├── __init__.py
+│   │       └── interview.py   # 面试题请求/响应/嵌套模型
 │   ├── venv/                  # 虚拟环境（已 gitignore）
 │   ├── requirements.txt
 │   └── .gitignore
@@ -75,7 +78,7 @@ ai-interview-agent/
 | Day | 内容 | 核心文件 | 状态 |
 |-----|------|---------|------|
 | Day 8 | FastAPI 项目结构与第一个接口 | main.py (GET /, GET /health) | ✅ |
-| Day 9 | Pydantic 请求/响应模型 | 待做 | 待做 |
+| Day 9 | Pydantic 请求/响应模型 | schemas/interview.py (BaseModel, Field, 嵌套模型) | ✅ |
 | Day 10 | JWT 登录认证 | 待做 | 待做 |
 | Day 11 | 数据库 ORM | 待做 | 待做 |
 | Day 12 | CRUD、分页、统一响应 | 待做 | 待做 |
@@ -87,6 +90,7 @@ ai-interview-agent/
 - **语言**：Python 3.11+
 - **HTTP 客户端**：httpx
 - **Web 框架**：FastAPI
+- **数据校验**：Pydantic
 - **ASGI 服务器**：uvicorn
 - **配置管理**：python-dotenv
 - **终端美化**：rich
