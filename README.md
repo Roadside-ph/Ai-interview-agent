@@ -51,6 +51,10 @@ ai-interview-agent/
 │   ├── app/
 │   │   ├── __init__.py
 │   │   ├── main.py            # FastAPI 入口，含 GET/POST 接口
+│   │   │                      # GET /, GET /health
+│   │   │                      # GET /questions, GET /questions/{id}
+│   │   │                      # POST /questions, PUT /questions/{id}
+│   │   │                      # DELETE /questions/{id}
 │   │   └── schemas/           # Pydantic 数据模型
 │   │       ├── __init__.py
 │   │       └── interview.py   # 面试题请求/响应/嵌套模型
@@ -79,9 +83,9 @@ ai-interview-agent/
 |-----|------|---------|------|
 | Day 8 | FastAPI 项目结构与第一个接口 | main.py (GET /, GET /health) | ✅ |
 | Day 9 | Pydantic 请求/响应模型 | schemas/interview.py (BaseModel, Field, 嵌套模型) | ✅ |
-| Day 10 | JWT 登录认证 | 待做 | 待做 |
-| Day 11 | 数据库 ORM | 待做 | 待做 |
-| Day 12 | CRUD、分页、统一响应 | 待做 | 待做 |
+| Day 10 | CRUD 四件套 + 内存存储 | main.py (GET/PUT/DELETE /questions) | ✅ |
+| Day 11 | 统一响应格式 + 分页 | 待做 | 待做 |
+| Day 12 | 数据库 ORM | 待做 | 待做 |
 | Day 13 | 日志、配置、基础测试 | 待做 | 待做 |
 | Day 14 | 复盘 | 待做 | 待做 |
 
