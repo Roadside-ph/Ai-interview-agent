@@ -57,7 +57,8 @@ ai-interview-agent/
 │   │   │                      # DELETE /questions/{id}
 │   │   └── schemas/           # Pydantic 数据模型
 │   │       ├── __init__.py
-│   │       └── interview.py   # 面试题请求/响应/嵌套模型
+│   │       ├── interview.py   # 面试题请求/响应/嵌套模型
+│   │       └── response.py    # 统一响应格式 (ApiResponse)
 │   ├── venv/                  # 虚拟环境（已 gitignore）
 │   ├── requirements.txt
 │   └── .gitignore
@@ -84,7 +85,7 @@ ai-interview-agent/
 | Day 8 | FastAPI 项目结构与第一个接口 | main.py (GET /, GET /health) | ✅ |
 | Day 9 | Pydantic 请求/响应模型 | schemas/interview.py (BaseModel, Field, 嵌套模型) | ✅ |
 | Day 10 | CRUD 四件套 + 内存存储 | main.py (GET/PUT/DELETE /questions) | ✅ |
-| Day 11 | 统一响应格式 + 分页 | 待做 | 待做 |
+| Day 11 | 统一响应格式 + 分页 | main.py (ApiResponse, 分页参数) | ✅ |
 | Day 12 | 数据库 ORM | 待做 | 待做 |
 | Day 13 | 日志、配置、基础测试 | 待做 | 待做 |
 | Day 14 | 复盘 | 待做 | 待做 |
