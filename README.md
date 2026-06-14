@@ -51,16 +51,15 @@ ai-interview-agent/
 │   ├── app/
 │   │   ├── __init__.py
 │   │   ├── main.py            # FastAPI 入口，含 GET/POST 接口
-│   │   │                      # GET /, GET /health
-│   │   │                      # GET /questions, GET /questions/{id}
-│   │   │                      # POST /questions, PUT /questions/{id}
-│   │   │                      # DELETE /questions/{id}
+│   │   ├── database.py        # 数据库连接配置 (SQLAlchemy)
+│   │   ├── models.py          # 数据库模型 (Question 表)
 │   │   └── schemas/           # Pydantic 数据模型
 │   │       ├── __init__.py
 │   │       ├── interview.py   # 面试题请求/响应/嵌套模型
 │   │       └── response.py    # 统一响应格式 (ApiResponse)
 │   ├── venv/                  # 虚拟环境（已 gitignore）
 │   ├── requirements.txt
+│   ├── 数据库调用指南.md       # 数据库学习指南
 │   └── .gitignore
 ├── week3_*/                    # Week 3-8 待添加
 └── README.md               # 本文件（总览）
@@ -86,7 +85,7 @@ ai-interview-agent/
 | Day 9 | Pydantic 请求/响应模型 | schemas/interview.py (BaseModel, Field, 嵌套模型) | ✅ |
 | Day 10 | CRUD 四件套 + 内存存储 | main.py (GET/PUT/DELETE /questions) | ✅ |
 | Day 11 | 统一响应格式 + 分页 | main.py (ApiResponse, 分页参数) | ✅ |
-| Day 12 | 数据库 ORM | 待做 | 待做 |
+| Day 12 | 数据库 ORM | main.py (SQLAlchemy, SQLite) | ✅ |
 | Day 13 | 日志、配置、基础测试 | 待做 | 待做 |
 | Day 14 | 复盘 | 待做 | 待做 |
 
@@ -103,6 +102,8 @@ ai-interview-agent/
 - **测试框架**：pytest
 - **日志**：logging
 - **LLM 服务**：DeepSeek API
+- **数据库**：SQLite
+- **ORM 框架**：SQLAlchemy
 
 ## 快速开始
 
