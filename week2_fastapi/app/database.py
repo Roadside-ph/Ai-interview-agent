@@ -3,7 +3,8 @@
 这个文件的作用：让 FastAPI 能连接到 SQLite 数据库。
 SQLite 是一个轻量级数据库，数据会保存到一个 .db 文件里。
 """
-
+import os
+from dotenv import load_dotenv
 # ========== 导入 SQLAlchemy 的工具 ==========
 
 # create_engine：创建数据库"引擎"，相当于"数据库连接器"
@@ -13,12 +14,9 @@ from sqlalchemy import create_engine
 # DeclarativeBase：创建数据库模型的"基类"，所有模型都要继承它
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 
+load_dotenv()
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./ai_interview.db")
 
-# ========== 数据库文件路径 ==========
-# SQLite 会把数据存到这个文件里
-# "./ai_interview.db" 表示当前目录下的 ai_interview.db 文件
-# 如果文件不存在，SQLite 会自动创建
-SQLALCHEMY_DATABASE_URL = "sqlite:///./ai_interview.db"
 
 
 # ========== 创建数据库引擎 ==========

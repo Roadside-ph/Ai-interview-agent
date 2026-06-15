@@ -10,7 +10,8 @@ from app.schemas.response import ApiResponse
 from sqlalchemy.orm import Session
 from app.database import engine, Base, get_db
 from app.models import Question
-
+from app.logger import setup_logger
+logger = setup_logger()
 
 app = FastAPI(
     title="AI-Interview Agent",
@@ -36,6 +37,7 @@ def health():
 @app.get("/questions", response_model=ApiResponse)
 def list_questions(page: int = 1, page_size: int = 10, db: Session = Depends(get_db)):
     """查看所有面试题目列表。"""
+    logger.info(f"查看题目列表")
     questions = db.query(Question).all()
     start = (page - 1) * page_size
     end = start + page_size
@@ -62,6 +64,7 @@ def get_question(question_id: int, db: Session = Depends(get_db)):
 
     question_id 是路径参数，比如 GET /questions/1 中的 1
     """
+    logger.info(f"查看题目：{question_id}")
     question = db.query(Question).filter(Question.id == question_id).first()
     if question:
         return ApiResponse(
@@ -84,6 +87,7 @@ def get_question(question_id: int, db: Session = Depends(get_db)):
 @app.put("/questions/{question_id}", response_model=ApiResponse)
 def update_question(question_id: int, question: QuestionCreate, db: Session = Depends(get_db)):
     """根据 ID 更新一道面试题目。"""
+    logger.info(f"更新题目：{question_id}")
     db_question = db.query(Question).filter(Question.id == question_id).first()
     if db_question:
         db_question.title = question.title
@@ -111,6 +115,7 @@ def update_question(question_id: int, question: QuestionCreate, db: Session = De
 @app.delete("/questions/{question_id}", response_model=ApiResponse)
 def delete_question(question_id: int, db: Session = Depends(get_db)):
     """根据 ID 删除一道题目。"""
+    logger.warning(f"删除题目：{question_id}")
     db_question = db.query(Question).filter(Question.id == question_id).first()
     if db_question:
         db.delete(db_question)
@@ -130,6 +135,7 @@ def delete_question(question_id: int, db: Session = Depends(get_db)):
 @app.post("/questions", response_model=ApiResponse)
 def create_question(question: QuestionCreate, db: Session = Depends(get_db)):
     """创建一道面试题目。"""
+    logger.info(f"创建题目：{question.title}")
     db_question = Question(
         title=question.title,
         category=question.category,

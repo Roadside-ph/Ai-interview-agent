@@ -86,7 +86,7 @@ ai-interview-agent/
 | Day 10 | CRUD 四件套 + 内存存储 | main.py (GET/PUT/DELETE /questions) | ✅ |
 | Day 11 | 统一响应格式 + 分页 | main.py (ApiResponse, 分页参数) | ✅ |
 | Day 12 | 数据库 ORM | main.py (SQLAlchemy, SQLite) | ✅ |
-| Day 13 | 日志、配置、基础测试 | 待做 | 待做 |
+| Day 13 | 日志、配置、基础测试 | logger.py, .env, test_questions.py | ✅ |
 | Day 14 | 复盘 | 待做 | 待做 |
 
 ## 技术栈
