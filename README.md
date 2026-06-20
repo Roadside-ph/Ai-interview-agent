@@ -22,7 +22,7 @@
 
 | 周次 | 主题 | 核心产出物 | 状态 |
 |------|------|-----------|------|
-| Week 3 | 简历解析与岗位匹配 | 简历解析与岗位匹配 API | 未开始 |
+| Week 3 | 简历解析与岗位匹配 | 简历解析与岗位匹配 API | 进行中 |
 | Week 4 | 面试题库 RAG v1 | 面试题库 RAG 检索服务 | 未开始 |
 | Week 5 | 岗位匹配 + RAG 出题 v2 | 岗位匹配驱动的出题与评分服务 | 未开始 |
 
@@ -61,7 +61,13 @@ ai-interview-agent/
 │   ├── requirements.txt
 │   ├── 数据库调用指南.md       # 数据库学习指南
 │   └── .gitignore
-├── week3_*/                    # Week 3-8 待添加
+├── week3_resume_matching/     # Week 3: 简历解析与岗位匹配（进行中）
+│   ├── app/                   # 继承 Week 2 代码，新增 LLM Client
+│   ├── tests/
+│   ├── requirements.txt
+│   ├── venv/
+│   └── .gitignore
+├── week4_*/                    # Week 4-8 待添加
 └── README.md               # 本文件（总览）
 ```
 
@@ -88,6 +94,18 @@ ai-interview-agent/
 | Day 12 | 数据库 ORM | main.py (SQLAlchemy, SQLite) | ✅ |
 | Day 13 | 日志、配置、基础测试 | logger.py, .env, test_questions.py | ✅ |
 | Day 14 | 复盘 + 测试补全 + 面试话术 | Week2复盘-项目结构.md, test_questions.py | ✅ |
+
+## Week 3 详细进度
+
+| Day | 内容 | 核心文件 | 状态 |
+|-----|------|---------|------|
+| Day 15 | LLM API Client 封装 | llm_client.py | 待做 |
+| Day 16 | Prompt 模板 + 结构化输出 | prompts.py, schemas/resume.py | 待做 |
+| Day 17 | 简历解析接口 | routers/resume.py | 待做 |
+| Day 18 | JD 解析 + 岗位匹配 | routers/matching.py | 待做 |
+| Day 19 | 流式输出 + 错误重试 | llm_client.py (stream, retry) | 待做 |
+| Day 20 | 测试 + 代码清理 | tests/test_resume.py | 待做 |
+| Day 21 | 复盘 | 待做 | 待做 |
 
 ## 技术栈
 
@@ -123,6 +141,16 @@ python -m app.main
 ```bash
 cd week2_fastapi
 python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload
+# 浏览器打开 http://127.0.0.1:8000/docs
+```
+
+### Week 3: 简历解析与岗位匹配
+
+```bash
+cd week3_resume_matching
 venv\Scripts\activate
 pip install -r requirements.txt
 python -m uvicorn app.main:app --reload
