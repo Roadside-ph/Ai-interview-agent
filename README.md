@@ -16,7 +16,7 @@
 | 周次 | 主题 | 核心产出物 | 状态 |
 |------|------|-----------|------|
 | Week 1 | Python MUP + HTTP + Git | LLM CLI 调用工具 | ✅ 已完成 |
-| Week 2 | FastAPI 后端骨架 | Agent 后端服务骨架 | 进行中 |
+|| Week 2 | FastAPI 后端骨架 | Agent 后端服务骨架 | ✅ 已完成 |
 
 ### Phase 2：RAG 与 AI-Interview（Week 3-5）
 
@@ -87,7 +87,7 @@ ai-interview-agent/
 | Day 11 | 统一响应格式 + 分页 | main.py (ApiResponse, 分页参数) | ✅ |
 | Day 12 | 数据库 ORM | main.py (SQLAlchemy, SQLite) | ✅ |
 | Day 13 | 日志、配置、基础测试 | logger.py, .env, test_questions.py | ✅ |
-| Day 14 | 复盘 | 待做 | 待做 |
+|| Day 14 | 复盘 + 测试补全 + 面试话术 | Week2复盘-项目结构.md, test_questions.py | ✅ |
 
 ## 技术栈
 
