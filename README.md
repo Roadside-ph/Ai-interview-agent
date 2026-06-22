@@ -100,7 +100,7 @@ ai-interview-agent/
 | Day | 内容 | 核心文件 | 状态 |
 |-----|------|---------|------|
 | Day 15 | LLM API Client 封装（重试、错误分类、日志、流式输出） | llm_client.py, test_llm_client.py | ✅ |
-| Day 16 | Prompt 模板 + 结构化输出 | prompts.py, schemas/resume.py | 待做 |
+| Day 16 | Prompt 模板 + 结构化输出 | prompts.py, schemas/resume.py, llm_client.py (chat_with_schema) | ✅ |
 | Day 17 | 简历解析接口 | routers/resume.py | 待做 |
 | Day 18 | JD 解析 + 岗位匹配 | routers/matching.py | 待做 |
 | Day 19 | 流式输出 + 错误重试 | llm_client.py (stream, retry) | 待做 |
