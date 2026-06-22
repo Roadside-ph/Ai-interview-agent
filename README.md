@@ -73,39 +73,39 @@ ai-interview-agent/
 
 ## Week 1 详细进度
 
-| Day | 内容 | 核心文件 | 状态 |
-|-----|------|---------|------|
-| Day 1 | Python 工程环境与函数基础 | config.py, history.py, .env | ✅ |
-| Day 2 | HTTP 与 API 调用 | api_client.py | ✅ |
-| Day 3 | 大模型 API 最小调用 | llm_client.py | ✅ |
-| Day 4 | 异步实践，并发调用与耗时统计 | async_llm_client.py, timer.py | ✅ |
-| Day 5 | LLM CLI 工具搭建 | main.py (Rich 美化) | ✅ |
-| Day 6 | 代码重构与 Debug | exceptions.py, logger.py | ✅ |
-| Day 7 | 测试与复盘 | test_exceptions.py, test_logger.py, test_config.py | ✅ |
+| Day    | 内容                         | 核心文件                                   | 状态 |
+|--------|------------------------------|--------------------------------------------|------|
+| Day 1  | Python 工程环境与函数基础    | config.py, history.py, .env                | ✅   |
+| Day 2  | HTTP 与 API 调用             | api_client.py                              | ✅   |
+| Day 3  | 大模型 API 最小调用          | llm_client.py                              | ✅   |
+| Day 4  | 异步实践，并发调用与耗时统计 | async_llm_client.py, timer.py              | ✅   |
+| Day 5  | LLM CLI 工具搭建             | main.py (Rich 美化)                        | ✅   |
+| Day 6  | 代码重构与 Debug             | exceptions.py, logger.py                   | ✅   |
+| Day 7  | 测试与复盘                   | test_exceptions.py, test_logger.py, test_config.py | ✅   |
 
 ## Week 2 详细进度
 
-| Day | 内容 | 核心文件 | 状态 |
-|-----|------|---------|------|
-| Day 8 | FastAPI 项目结构与第一个接口 | main.py (GET /, GET /health) | ✅ |
-| Day 9 | Pydantic 请求/响应模型 | schemas/interview.py (BaseModel, Field, 嵌套模型) | ✅ |
-| Day 10 | CRUD 四件套 + 内存存储 | main.py (GET/PUT/DELETE /questions) | ✅ |
-| Day 11 | 统一响应格式 + 分页 | main.py (ApiResponse, 分页参数) | ✅ |
-| Day 12 | 数据库 ORM | main.py (SQLAlchemy, SQLite) | ✅ |
-| Day 13 | 日志、配置、基础测试 | logger.py, .env, test_questions.py | ✅ |
-| Day 14 | 复盘 + 测试补全 + 面试话术 | Week2复盘-项目结构.md, test_questions.py | ✅ |
+| Day     | 内容                         | 核心文件                                   | 状态 |
+|---------|------------------------------|--------------------------------------------|------|
+| Day 8   | FastAPI 项目结构与第一个接口 | main.py (GET /, GET /health)               | ✅   |
+| Day 9   | Pydantic 请求/响应模型       | schemas/interview.py (BaseModel, Field, 嵌套模型) | ✅   |
+| Day 10  | CRUD 四件套 + 内存存储       | main.py (GET/PUT/DELETE /questions)        | ✅   |
+| Day 11  | 统一响应格式 + 分页          | main.py (ApiResponse, 分页参数)            | ✅   |
+| Day 12  | 数据库 ORM                   | main.py (SQLAlchemy, SQLite)               | ✅   |
+| Day 13  | 日志、配置、基础测试         | logger.py, .env, test_questions.py         | ✅   |
+| Day 14  | 复盘 + 测试补全 + 面试话术   | Week2复盘-项目结构.md, test_questions.py   | ✅   |
 
 ## Week 3 详细进度
 
-| Day | 内容 | 核心文件 | 状态 |
-|-----|------|---------|------|
-| Day 15 | LLM API Client 封装（重试、错误分类、日志、流式输出） | llm_client.py, test_llm_client.py | ✅ |
-| Day 16 | Prompt 模板 + 结构化输出 | prompts.py, schemas/resume.py, llm_client.py | ✅ |
-| Day 17 | 简历解析接口 | routers/resume.py | 待做 |
-| Day 18 | JD 解析 + 岗位匹配 | routers/matching.py | 待做 |
-| Day 19 | 流式输出 + 错误重试 | llm_client.py (stream, retry) | 待做 |
-| Day 20 | 测试 + 代码清理 | tests/test_resume.py | 待做 |
-| Day 21 | 复盘 | 待做 | 待做 |
+| Day     | 内容                         | 核心文件                                   | 状态 |
+|---------|------------------------------|--------------------------------------------|------|
+| Day 15  | LLM API Client 封装          | llm_client.py, test_llm_client.py          | ✅   |
+| Day 16  | Prompt 模板 + 结构化输出     | prompts.py, schemas/resume.py, llm_client.py | ✅   |
+| Day 17  | 简历解析接口                 | routers/resume.py                          | 待做 |
+| Day 18  | JD 解析 + 岗位匹配           | routers/matching.py                        | 待做 |
+| Day 19  | 流式输出 + 错误重试          | llm_client.py (stream, retry)              | 待做 |
+| Day 20  | 测试 + 代码清理              | tests/test_resume.py                       | 待做 |
+| Day 21  | 复盘                         | 待做                                       | 待做 |
 
 ## 技术栈
 
