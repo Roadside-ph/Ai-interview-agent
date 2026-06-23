@@ -3,10 +3,10 @@ from pydantic import BaseModel
 
 class ResumeInfo(BaseModel):
     name: str | None = None
-    education: list[str] = []
-    skills: list[str] = []
+    education: list[str] | None = []
+    skills: list[str] | None = []
     experience_years: int | None = None
-    project_summary: list[str] = []
+    project_summary: list[str] | None = []
 
 
 class JobInfo(BaseModel):
