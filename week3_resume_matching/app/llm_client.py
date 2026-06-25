@@ -86,37 +86,72 @@ class DeepSeekClient:
 
     async def chat_stream(self, messages: list[dict[str, str]]):
         import json
-        headers = {"Authorization": f"Bearer {self.api_key}"}
+        last_error = None
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                headers = {"Authorization": f"Bearer {self.api_key}"}
+                json_data = {
+                    "model": self.model,
+                    "messages": messages,
+                    "stream": True
+                }
+                logger.info(f"开始流式请求，模型：{self.model}")
 
-        json_data = {
-            "model": self.model,
-            "messages": messages,
-            "stream": True
-        }
-        logger.info(f"开始流式请求，模型：{self.model}")
+                async with self._client.stream(
+                    "POST",
+                    "/chat/completions",
+                    json=json_data,
+                    headers=headers
+                ) as response:
+                    response.raise_for_status()
 
-        async with self._client.stream(
-            "POST",
-            "/chat/completions",
-            json=json_data,
-            headers=headers
-        ) as response:
-            response.raise_for_status()
+                    async for line in response.aiter_lines():
+                        if not line.startswith("data: "):
+                            continue
+                        data_str = line[6:]
 
-            async for line in response.aiter_lines():
-                if not line.startswith("data: "):
-                    continue
-                data_str = line[6:]
+                        if data_str.strip() == "[DONE]":
+                            break
 
-                if data_str.strip() == "[DONE]":
-                    break
+                        data = json.loads(data_str)
+                        delta = data["choices"][0]["delta"]
 
-                data = json.loads(data_str)
-                delta = data["choices"][0]["delta"]
+                        if "content" in delta:
+                            yield delta["content"]
+                    
+                logger.info("流式传输完成")
+                return
+            except httpx.HTTPStatusError as e:
+                status_code = e.response.status_code
+                last_error = e
 
-                if "content" in delta:
-                    yield delta["content"]
-        logger.info("流式传输完成")
+                if status_code in (401, 403):
+                    logger.error(f"认证失败，状态码：{status_code}, 不重试")
+                    raise
+
+                logger.warning(
+                    f"流式请求失败，状态码：{status_code}，"
+                    f"第{attempt}/{self.max_retries}次重试"
+                )
+
+            except httpx.TimeoutException as e:
+                    last_error = e
+                    logger.error(f"流式请求超时，第{attempt}/{self.max_retries}次重试")
+            
+            except httpx.ConnectError as e:
+                last_error = e
+                logger.error(f"流式连接失败，第{attempt}/{self.max_retries}次重试")
+
+            if attempt < self.max_retries:
+                wait_time = 2 ** (attempt - 1)
+                logger.info(f"等待{wait_time}秒后重试")
+                await asyncio.sleep(wait_time)
+
+        logger.error(f"流式请求失败，第{attempt}/{self.max_retries}次重试")
+        raise last_error
+
+                    
+
 
     async def chat_with_schema(
         self,

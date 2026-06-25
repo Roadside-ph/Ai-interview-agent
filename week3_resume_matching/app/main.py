@@ -13,6 +13,7 @@ from app.models import Question
 from app.logger import setup_logger
 from app.routers.resume import router as resume_router
 from app.routers.match import router as matching_router 
+from app.routers import stream
 
 logger = setup_logger()
 
@@ -26,6 +27,7 @@ app = FastAPI(
 Base.metadata.create_all(bind=engine)
 app.include_router(resume_router)
 app.include_router(matching_router) 
+app.include_router(stream.router)
 
 @app.get("/")
 def root():
