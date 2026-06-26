@@ -22,7 +22,7 @@
 
 | 周次 | 主题 | 核心产出物 | 状态 |
 |------|------|-----------|------|
-| Week 3 | 简历解析与岗位匹配 | 简历解析与岗位匹配 API | 进行中 |
+| Week 3 | 简历解析与岗位匹配 | 简历解析与岗位匹配 API | ✅ 已完成 |
 | Week 4 | 面试题库 RAG v1 | 面试题库 RAG 检索服务 | 未开始 |
 | Week 5 | 岗位匹配 + RAG 出题 v2 | 岗位匹配驱动的出题与评分服务 | 未开始 |
 
@@ -61,11 +61,22 @@ ai-interview-agent/
 │   ├── requirements.txt
 │   ├── 数据库调用指南.md       # 数据库学习指南
 │   └── .gitignore
-├── week3_resume_matching/     # Week 3: 简历解析与岗位匹配（进行中）
-│   ├── app/                   # 继承 Week 2 代码，新增 LLM Client
-│   ├── tests/
+├── week3_resume_matching/     # Week 3: 简历解析与岗位匹配（已完成）
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py            # FastAPI 入口，注册路由
+│   │   ├── config.py          # 配置管理
+│   │   ├── database.py        # 数据库连接配置
+│   │   ├── models.py          # 数据库模型
+│   │   ├── exceptions.py      # 自定义异常类
+│   │   ├── logger.py          # 日志配置
+│   │   ├── llm_client.py      # DeepSeek API 客户端
+│   │   ├── prompts.py         # Prompt 模板
+│   │   ├── schemas/           # Pydantic 数据模型
+│   │   └── routers/           # API 路由
+│   ├── tests/                 # pytest 测试（35 个用例）
 │   ├── requirements.txt
-│   ├── venv/
+│   ├── Week3复盘-简历解析与岗位匹配.md
 │   └── .gitignore
 ├── week4_*/                    # Week 4-8 待添加
 └── README.md               # 本文件（总览）
@@ -105,7 +116,7 @@ ai-interview-agent/
 | Day 18  | JD 解析 + 岗位匹配           | routers/match.py                           | ✅   |
 | Day 19  | 流式输出 + 错误重试          | llm_client.py (stream, retry), routers/stream.py | ✅   |
 | Day 20  | 测试 + 代码清理              | tests/test_resume.py, tests/test_match.py  | ✅   |
-| Day 21  | 复盘                         | 待做                                       | 待做 |
+| Day 21  | 复盘                         | Week3复盘-简历解析与岗位匹配.md            | ✅   |
 
 ## 技术栈
 
@@ -164,6 +175,8 @@ python -m uvicorn app.main:app --reload
 > **Week 1** 我搭建了一个 LLM CLI 工具，封装了 DeepSeek API，支持异步并发调用、对话历史持久化、Rich 终端美化。学会了 HTTP 调用、异步编程、模块化设计、自定义异常和日志系统。
 >
 > **Week 2** 我用 FastAPI 把 CLI 工具升级成了后端服务，实现了 Pydantic 数据验证、JWT 认证、数据库 CRUD。
+>
+> **Week 3** 我实现了简历解析与岗位匹配 API，使用 Pydantic 进行数据校验，使用 APIRouter 进行路由拆分，使用 Mock 进行单元测试，使用 try-except-finally 进行异常处理。
 >
 > 后续几周我会接入 RAG 检索、Agent 工作流，最终完成"简历解析 -> 岗位匹配 -> RAG 出题 -> AI 评分 -> 面试报告"的完整闭环。
 
