@@ -104,7 +104,7 @@ ai-interview-agent/
 | Day 17  | 简历解析接口                 | routers/resume.py                          | ✅   |
 | Day 18  | JD 解析 + 岗位匹配           | routers/match.py                           | ✅   |
 | Day 19  | 流式输出 + 错误重试          | llm_client.py (stream, retry), routers/stream.py | ✅   |
-| Day 20  | 测试 + 代码清理              | tests/test_resume.py                       | 待做 |
+| Day 20  | 测试 + 代码清理              | tests/test_resume.py, tests/test_match.py  | ✅   |
 | Day 21  | 复盘                         | 待做                                       | 待做 |
 
 ## 技术栈

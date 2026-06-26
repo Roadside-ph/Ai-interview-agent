@@ -16,18 +16,24 @@ async def parse_jd(req:JDRequest):
 
     config = load_config()
     client = DeepSeekClient(config)
-
-    prompt = JD_PARSE_PROMPT.format(jd_text=req.jd_text)
-
-    messages = [{"role":"user", "content":prompt}]
-    result = await client.chat_with_schema(messages, JobInfo)
-    
-    await client.aclose()
-    return ApiResponse(
-        code=200,
-        message="JD解析成功",
-        data = result
-    )
+    try:
+        prompt = JD_PARSE_PROMPT.format(jd_text=req.jd_text)
+        messages = [{"role":"user", "content":prompt}]
+        result = await client.chat_with_schema(messages, JobInfo)
+        return ApiResponse(
+            code=200,
+            message="JD解析成功",
+            data=result
+        )
+    except Exception as e:
+        return ApiResponse(
+            code=500,
+            message=f"JD解析失败：{str(e)}",
+            data=None
+        )
+    finally:
+        await client.aclose()
+ 
 
 class MatchRequest(BaseModel):
     resume_info:str
@@ -38,18 +44,24 @@ async def match_resume_jd(req:MatchRequest):
 
     config = load_config()
     client = DeepSeekClient(config)
-
-    prompt = MATCHING_PROMPT.format(
-        resume_info = req.resume_info,
-        jd_info=req.jd_info
+    try:
+        prompt = MATCHING_PROMPT.format(
+            resume_info = req.resume_info,
+            jd_info=req.jd_info
+            )
+        messages = [{"role":"user", "content":prompt}]
+        result = await client.chat_with_schema(messages, MatchResult)
+        return ApiResponse(
+            code=200,
+            message="岗位匹配分析成功",
+            data=result
         )
-
-    messages = [{"role":"user", "content":prompt}]
-    result = await client.chat_with_schema(messages, MatchResult)
     
-    await client.aclose()
-    return ApiResponse(
-        code=200,
-        message="岗位匹配分析成功",
-        data = result
-    )
+    except Exception as e:
+        return ApiResponse(
+            code=500,
+            message=f"岗位匹配失败：{str(e)}",
+            data=None
+        )
+    finally:
+        await client.aclose()
