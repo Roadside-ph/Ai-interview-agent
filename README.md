@@ -23,7 +23,7 @@
 | 周次 | 主题 | 核心产出物 | 状态 |
 |------|------|-----------|------|
 | Week 3 | 简历解析与岗位匹配 | 简历解析与岗位匹配 API | ✅ 已完成 |
-| Week 4 | 面试题库 RAG v1 | 面试题库 RAG 检索服务 | 未开始 |
+| Week 4 | 面试题库 RAG v1 | 面试题库 RAG 检索服务 | 进行中 |
 | Week 5 | 岗位匹配 + RAG 出题 v2 | 岗位匹配驱动的出题与评分服务 | 未开始 |
 
 ### Phase 3：Agent 与工作流（Week 6-7）
@@ -78,7 +78,32 @@ ai-interview-agent/
 │   ├── requirements.txt
 │   ├── Week3复盘-简历解析与岗位匹配.md
 │   └── .gitignore
-├── week4_*/                    # Week 4-8 待添加
+├── week4_rag/                  # Week 4: 面试题库 RAG v1（进行中）
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py            # FastAPI 入口
+│   │   ├── config.py          # 配置管理
+│   │   ├── database.py        # 数据库连接配置
+│   │   ├── models.py          # 数据库模型
+│   │   ├── exceptions.py      # 自定义异常类
+│   │   ├── logger.py          # 日志配置
+│   │   ├── llm_client.py      # DeepSeek API 客户端
+│   │   ├── prompts.py         # Prompt 模板
+│   │   ├── data_loader.py     # 面试题数据加载
+│   │   ├── retriever.py       # 检索器（基础版：tag 匹配）
+│   │   ├── text_splitter.py   # 文本切分（待创建）
+│   │   ├── embedder.py        # Embedding 封装（待创建）
+│   │   ├── vector_store.py    # Chroma 向量存储（待创建）
+│   │   ├── rag_chain.py       # RAG 链路（待创建）
+│   │   ├── schemas/           # Pydantic 数据模型
+│   │   └── routers/           # API 路由
+│   ├── data/
+│   │   └── questions.json     # 面试题样本数据（20 道）
+│   ├── tests/                 # pytest 测试
+│   ├── requirements.txt
+│   ├── Week4大纲-面试试题库RAG.md
+│   └── .gitignore
+├── week5_*/                    # Week 5-8 待添加
 └── README.md               # 本文件（总览）
 ```
 
@@ -118,6 +143,18 @@ ai-interview-agent/
 | Day 20  | 测试 + 代码清理              | tests/test_resume.py, tests/test_match.py  | ✅   |
 | Day 21  | 复盘                         | Week3复盘-简历解析与岗位匹配.md            | ✅   |
 
+## Week 4 详细进度
+
+| Day     | 内容                         | 核心文件                                   | 状态 |
+|---------|------------------------------|--------------------------------------------|------|
+| Day 22  | RAG 概念普及 + 题库数据准备  | data/questions.json, data_loader.py, retriever.py | ✅   |
+| Day 23  | LangChain 文档加载与文本切分 | text_splitter.py                           | 待做 |
+| Day 24  | Embedding + Chroma 向量入库  | embedder.py, vector_store.py               | 待做 |
+| Day 25  | RAG 检索链路搭建             | rag_chain.py                               | 待做 |
+| Day 26  | 面试题库 RAG API 接口        | routers/rag.py, schemas/rag.py             | 待做 |
+| Day 27  | 测试 + 代码清理              | tests/test_rag.py                          | 待做 |
+| Day 28  | 复盘                         | Week4复盘-面试试题库RAG.md                 | 待做 |
+
 ## 技术栈
 
 - **语言**：Python 3.11+
@@ -133,6 +170,8 @@ ai-interview-agent/
 - **LLM 服务**：DeepSeek API
 - **数据库**：SQLite
 - **ORM 框架**：SQLAlchemy
+- **RAG 框架**：LangChain
+- **向量数据库**：Chroma
 
 ## 快速开始
 
@@ -168,6 +207,16 @@ python -m uvicorn app.main:app --reload
 # 浏览器打开 http://127.0.0.1:8000/docs
 ```
 
+### Week 4: 面试题库 RAG v1
+
+```bash
+cd week4_rag
+conda activate ai-agent
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload
+# 浏览器打开 http://127.0.0.1:8000/docs
+```
+
 ## 面试话术
 
 > 这是我为期 8 周的 AI Agent 实习冲刺项目。从 Python 基础开始，逐步构建了一个完整的 AI-Interview 智能模拟面试系统。
@@ -178,7 +227,9 @@ python -m uvicorn app.main:app --reload
 >
 > **Week 3** 我实现了简历解析与岗位匹配 API，使用 Pydantic 进行数据校验，使用 APIRouter 进行路由拆分，使用 Mock 进行单元测试，使用 try-except-finally 进行异常处理。
 >
-> 后续几周我会接入 RAG 检索、Agent 工作流，最终完成"简历解析 -> 岗位匹配 -> RAG 出题 -> AI 评分 -> 面试报告"的完整闭环。
+> **Week 4** 我正在实现面试题库 RAG 检索服务，使用 LangChain 进行文档加载和文本切分，使用 Chroma 向量数据库存储 Embedding，实现语义检索面试题。
+>
+> 后续几周我会接入 Agent 工作流，最终完成"简历解析 -> 岗位匹配 -> RAG 出题 -> AI 评分 -> 面试报告"的完整闭环。
 
 ## 许可证
 
