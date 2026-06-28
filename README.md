@@ -91,7 +91,7 @@ ai-interview-agent/
 │   │   ├── prompts.py         # Prompt 模板
 │   │   ├── data_loader.py     # 面试题数据加载
 │   │   ├── retriever.py       # 检索器（基础版：tag 匹配）
-│   │   ├── text_splitter.py   # 文本切分（待创建）
+│   │   ├── text_splitter.py   # 文本切分
 │   │   ├── embedder.py        # Embedding 封装（待创建）
 │   │   ├── vector_store.py    # Chroma 向量存储（待创建）
 │   │   ├── rag_chain.py       # RAG 链路（待创建）
@@ -148,7 +148,7 @@ ai-interview-agent/
 | Day     | 内容                         | 核心文件                                   | 状态 |
 |---------|------------------------------|--------------------------------------------|------|
 | Day 22  | RAG 概念普及 + 题库数据准备  | data/questions.json, data_loader.py, retriever.py | ✅   |
-| Day 23  | LangChain 文档加载与文本切分 | text_splitter.py                           | 待做 |
+| Day 23  | LangChain 文档加载与文本切分 | text_splitter.py                           | ✅   |
 | Day 24  | Embedding + Chroma 向量入库  | embedder.py, vector_store.py               | 待做 |
 | Day 25  | RAG 检索链路搭建             | rag_chain.py                               | 待做 |
 | Day 26  | 面试题库 RAG API 接口        | routers/rag.py, schemas/rag.py             | 待做 |
@@ -180,7 +180,7 @@ ai-interview-agent/
 ```bash
 cd week1_llm_cli
 python -m venv venv
-venv\Scripts\activate
+venv\\Scripts\\activate
 pip install -r requirements.txt
 cp .env.example .env  # 填入 API Key
 python -m app.main
@@ -191,7 +191,7 @@ python -m app.main
 ```bash
 cd week2_fastapi
 python -m venv venv
-venv\Scripts\activate
+venv\\Scripts\\activate
 pip install -r requirements.txt
 python -m uvicorn app.main:app --reload
 # 浏览器打开 http://127.0.0.1:8000/docs
@@ -201,7 +201,7 @@ python -m uvicorn app.main:app --reload
 
 ```bash
 cd week3_resume_matching
-venv\Scripts\activate
+venv\\Scripts\\activate
 pip install -r requirements.txt
 python -m uvicorn app.main:app --reload
 # 浏览器打开 http://127.0.0.1:8000/docs
