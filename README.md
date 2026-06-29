@@ -92,8 +92,8 @@ ai-interview-agent/
 │   │   ├── data_loader.py     # 面试题数据加载
 │   │   ├── retriever.py       # 检索器（基础版：tag 匹配）
 │   │   ├── text_splitter.py   # 文本切分
-│   │   ├── embedder.py        # Embedding 封装（待创建）
-│   │   ├── vector_store.py    # Chroma 向量存储（待创建）
+│   │   ├── embedder.py        # Embedding 封装（本地 sentence-transformers）
+│   │   ├── vector_store.py    # Chroma 向量存储
 │   │   ├── rag_chain.py       # RAG 链路（待创建）
 │   │   ├── schemas/           # Pydantic 数据模型
 │   │   └── routers/           # API 路由
@@ -149,7 +149,7 @@ ai-interview-agent/
 |---------|------------------------------|--------------------------------------------|------|
 | Day 22  | RAG 概念普及 + 题库数据准备  | data/questions.json, data_loader.py, retriever.py | ✅   |
 | Day 23  | LangChain 文档加载与文本切分 | text_splitter.py                           | ✅   |
-| Day 24  | Embedding + Chroma 向量入库  | embedder.py, vector_store.py               | 待做 |
+| Day 24  | Embedding + Chroma 向量入库  | embedder.py, vector_store.py               | ✅   |
 | Day 25  | RAG 检索链路搭建             | rag_chain.py                               | 待做 |
 | Day 26  | 面试题库 RAG API 接口        | routers/rag.py, schemas/rag.py             | 待做 |
 | Day 27  | 测试 + 代码清理              | tests/test_rag.py                          | 待做 |
@@ -172,6 +172,7 @@ ai-interview-agent/
 - **ORM 框架**：SQLAlchemy
 - **RAG 框架**：LangChain
 - **向量数据库**：Chroma
+- **Embedding**：sentence-transformers（本地模型）
 
 ## 快速开始
 
@@ -227,7 +228,7 @@ python -m uvicorn app.main:app --reload
 >
 > **Week 3** 我实现了简历解析与岗位匹配 API，使用 Pydantic 进行数据校验，使用 APIRouter 进行路由拆分，使用 Mock 进行单元测试，使用 try-except-finally 进行异常处理。
 >
-> **Week 4** 我正在实现面试题库 RAG 检索服务，使用 LangChain 进行文档加载和文本切分，使用 Chroma 向量数据库存储 Embedding，实现语义检索面试题。
+> **Week 4** 我实现了面试题库 RAG 检索服务：使用 LangChain 进行文档加载和文本切分，本地部署 sentence-transformers 模型做 Embedding，用 Chroma 向量数据库存储并实现语义检索，不依赖外部 Embedding API。
 >
 > 后续几周我会接入 Agent 工作流，最终完成"简历解析 -> 岗位匹配 -> RAG 出题 -> AI 评分 -> 面试报告"的完整闭环。
 
