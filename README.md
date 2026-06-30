@@ -94,7 +94,7 @@ ai-interview-agent/
 │   │   ├── text_splitter.py   # 文本切分
 │   │   ├── embedder.py        # Embedding 封装（本地 sentence-transformers）
 │   │   ├── vector_store.py    # Chroma 向量存储
-│   │   ├── rag_chain.py       # RAG 链路（待创建）
+│   │   ├── rag_chain.py       # RAG 检索链路（检索 + LLM 生成）
 │   │   ├── schemas/           # Pydantic 数据模型
 │   │   └── routers/           # API 路由
 │   ├── data/
@@ -150,7 +150,7 @@ ai-interview-agent/
 | Day 22  | RAG 概念普及 + 题库数据准备  | data/questions.json, data_loader.py, retriever.py | ✅   |
 | Day 23  | LangChain 文档加载与文本切分 | text_splitter.py                           | ✅   |
 | Day 24  | Embedding + Chroma 向量入库  | embedder.py, vector_store.py               | ✅   |
-| Day 25  | RAG 检索链路搭建             | rag_chain.py                               | 待做 |
+| Day 25  | RAG 检索链路搭建             | rag_chain.py                               | ✅   |
 | Day 26  | 面试题库 RAG API 接口        | routers/rag.py, schemas/rag.py             | 待做 |
 | Day 27  | 测试 + 代码清理              | tests/test_rag.py                          | 待做 |
 | Day 28  | 复盘                         | Week4复盘-面试试题库RAG.md                 | 待做 |
