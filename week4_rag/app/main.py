@@ -14,6 +14,7 @@ from app.logger import setup_logger
 from app.routers.resume import router as resume_router
 from app.routers.match import router as matching_router 
 from app.routers import stream
+from app.routers.rag import router as rag_router
 
 logger = setup_logger()
 
@@ -28,6 +29,7 @@ Base.metadata.create_all(bind=engine)
 app.include_router(resume_router)
 app.include_router(matching_router) 
 app.include_router(stream.router)
+app.include_router(rag_router)
 
 @app.get("/")
 def root():
